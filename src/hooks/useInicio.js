@@ -11,7 +11,16 @@ const useInicio = () => {
           imagen {
             sharp: localFile {
               childImageSharp {
-                gatsbyImageData(formats: [AUTO, WEBP, AVIF])
+                gatsbyImageData(
+                  formats: [AUTO, WEBP, AVIF]
+                  transformOptions: {
+                    duotone: {
+                      highlight: "#222222"
+                      shadow: "#192550"
+                      opacity: 30
+                    }
+                  }
+                )
               }
             }
           }

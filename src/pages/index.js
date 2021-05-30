@@ -1,11 +1,14 @@
 import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import BackgroundImage from "gatsby-background-image"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import React from "react"
 import Layout from "../components/layout"
 import useInicio from "../hooks/useInicio"
 import { convertToBgImage } from "gbimage-bridge"
+import * as heroCSS from "../css/hero.module.css"
+import Encuentra from "../components/encuentra"
+import ListadoPropiedades from "../components/listadoPropiedades"
 
 const ImagenBackGround = styled(BackgroundImage)`
   height: 600px;
@@ -14,14 +17,15 @@ const ImagenBackGround = styled(BackgroundImage)`
 const Index = () => {
   const inicio = useInicio()
   const { nombre, contenido, imagen } = inicio[0]
-  console.log(imagen)
   const image = getImage(imagen.sharp)
   const bgImage = convertToBgImage(image)
   return (
     <Layout>
       <ImagenBackGround tag="section" {...bgImage} fadeIn="soft">
-        <div>
-          <h1>Venta de casas y departamentos exclusivos</h1>
+        <div className={heroCSS.imagenbg}>
+          <h1 className={heroCSS.titulo}>
+            Venta de casas y departamentos exclusivos
+          </h1>
         </div>
       </ImagenBackGround>
       <main>
@@ -41,6 +45,8 @@ const Index = () => {
           </p>
         </div>
       </main>
+      <Encuentra />
+      <ListadoPropiedades />
     </Layout>
   )
 }
